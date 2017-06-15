@@ -1,5 +1,7 @@
 //
 //  Matrix.h
+//  placement
+//
 //  Created by Swapnil Dhanwal on 13/06/2017.
 //  Copyright © 2017 Swapnil Dhanwal. All rights reserved.
 //
@@ -338,6 +340,79 @@ public:
         
     }
     
+    Matrix<double> sumCol()
+    {
+        
+        Matrix<double> result(m, 1);
+        for (int i = 0; i < m; i++)
+        {
+            
+            for (int j = 0; j < n; j++)
+            {
+                
+                result[i][0] += array[i][j];
+                
+            }
+            
+        }
+        return result;
+        
+    }
+    
+    Matrix<double> mean()
+    {
+        
+        Matrix<double> result(1, n);
+        for (int i = 0; i < m; i++)
+        {
+            
+            for (int j = 0; j < n; j++)
+            {
+                
+                result[0][j] += array[i][j];
+                
+            }
+            
+        }
+        for (int j = 0; j < n; j++)
+        {
+            
+            result[0][j] /= m;
+            
+        }
+        return result;
+        
+    }
+    
+    Matrix<double> std()
+    {
+        
+        Matrix<double> mean = this->mean();
+        Matrix<double> std(1, n);
+        for (int i = 0; i < m; i++)
+        {
+            
+            for (int j = 0; j < n; j++)
+            {
+                
+                double temp = array[i][j] - mean[0][j];
+                std[0][j] += temp*temp;
+                
+            }
+            
+        }
+        for (int j = 0; j < n; j++)
+        {
+            
+            std[0][j] /= m;
+            std[0][j] = sqrt(std[0][j]);
+            
+        }
+        return std;
+        
+        
+    }
+    
     double meanRow(int row)
     {
         
@@ -420,6 +495,27 @@ public:
             }
             
         }
+    }
+    
+    void _normalise()
+    {
+        
+        Matrix<double> mean = this->mean();
+        Matrix<double> std = this->std();
+        
+        for (int i = 0; i < m; i++)
+        {
+            
+            for (int j = 0; j < n; j++)
+            {
+                
+                array[i][j] -= mean[0][j];
+                array[i][j] /= std[0][j];
+
+            }
+            
+        }
+        
     }
     
     t max()
@@ -558,7 +654,7 @@ public:
                 for (int j = 0; j < n; j++)
                 {
                     
-                    result->array[0][j] = array[i][j];
+                    result.array[0][j] = array[i][j];
                     
                 }
                 return result;
