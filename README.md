@@ -62,7 +62,7 @@ Y = X.r(1, 4) //Get matrix from 1th to rth row
 
 ### 4. Aggregate functions
 Get sum, mean, standard deviation of row/column.
-```
+```c++
 Matrix<double> X("test.csv");
 double m = X.meanRow(3);
 m = X.stdRow(2);
