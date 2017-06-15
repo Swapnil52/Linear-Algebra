@@ -3,6 +3,6 @@ Matrix.h is an implementation of matrices and operations on them, in C++. I have
 
 # How to use
 1. Initialisation with zeros:
-```
+```c++
 Matrix<double> X(int m, int n) //m is the number of rows and n, columns.
 ```
