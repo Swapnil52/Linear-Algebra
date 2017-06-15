@@ -1,7 +1,5 @@
 //
 //  Matrix.h
-//  placement
-//
 //  Created by Swapnil Dhanwal on 13/06/2017.
 //  Copyright © 2017 Swapnil Dhanwal. All rights reserved.
 //
